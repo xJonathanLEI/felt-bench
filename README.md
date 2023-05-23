@@ -10,6 +10,8 @@ Comparison of performance of various Starknet field element type implementations
 | `add_assign` | 2.7045 ns                                                          | 27.158 ns                                             |
 | `sub`        | 8.1949 ns                                                          | 29.316 ns                                             |
 | `sub_assign` | 10.804 ns                                                          | 24.897 ns                                             |
+| `mul`        | 16.790 ns                                                          | 198.76 ns                                             |
+| `mul_assign` | 20.153 ns                                                          | 181.57 ns                                             |
 
 ## Environment
 
