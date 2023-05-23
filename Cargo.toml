@@ -26,3 +26,11 @@ harness = false
 [[bench]]
 name = "sub_assign"
 harness = false
+
+[[bench]]
+name = "mul"
+harness = false
+
+[[bench]]
+name = "mul_assign"
+harness = false
