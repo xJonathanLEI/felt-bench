@@ -18,3 +18,11 @@ harness = false
 [[bench]]
 name = "add_assign"
 harness = false
+
+[[bench]]
+name = "sub"
+harness = false
+
+[[bench]]
+name = "sub_assign"
+harness = false
