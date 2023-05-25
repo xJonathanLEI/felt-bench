@@ -47,6 +47,33 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             });
         });
     }
+
+    // stark_curve
+    {
+        use stark_curve::FieldElement;
+        use stark_hash::Felt;
+
+        let num_1 = FieldElement::from(
+            Felt::from_be_slice(
+                &hex::decode("03d937c035c878245caf64531a5756109c53068da139362728feb561405371cb")
+                    .unwrap(),
+            )
+            .unwrap(),
+        );
+        let num_2 = FieldElement::from(
+            Felt::from_be_slice(
+                &hex::decode("0208a0a10250e382e1e4bbe2880906c2791bf6275695e02fbbc6aeff9cd8b31a")
+                    .unwrap(),
+            )
+            .unwrap(),
+        );
+
+        c.bench_function("mul | stark_curve - eqlabs/pathfinder@fccef91", |b| {
+            b.iter(|| {
+                black_box(num_1.mul(num_2));
+            });
+        });
+    }
 }
 
 criterion_group!(benches, criterion_benchmark);
