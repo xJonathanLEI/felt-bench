@@ -4,14 +4,14 @@ Comparison of performance of various Starknet field element type implementations
 
 ## Results
 
-|              | [stark_curve](https://github.com/eqlabs/pathfinder) :crown: | [starknet-ff](https://github.com/xJonathanLEI/starknet-rs) | [cairo-felt](https://github.com/lambdaclass/cairo-rs) |
-| ------------ | ----------------------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------- |
-| `add`        | 3.1639 ns                                                   | 3.4356 ns                                                  | 30.892 ns                                             |
-| `add_assign` | 1.4107 ns                                                   | 2.5347 ns                                                  | 25.833 ns                                             |
-| `sub`        | 2.3081 ns                                                   | 8.4291 ns                                                  | 28.645 ns                                             |
-| `sub_assign` | 1.3403 ns                                                   | 10.267 ns                                                  | 23.913 ns                                             |
-| `mul`        | 12.863 ns                                                   | 16.729 ns                                                  | 203.36 ns                                             |
-| `mul_assign` | 11.411 ns                                                   | 19.223 ns                                                  | 173.98 ns                                             |
+|              | [stark_curve](https://github.com/eqlabs/pathfinder) :crown: | [starknet-ff](https://github.com/xJonathanLEI/starknet-rs) | [lambdaworks-math](https://github.com/lambdaclass/lambdaworks) | [cairo-felt](https://github.com/lambdaclass/cairo-rs) |
+| ------------ | ----------------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------- |
+| `add`        | 3.1055 ns                                                   | 3.4377 ns                                                  | 8.9938 ns                                                      | 30.547 ns                                             |
+| `add_assign` | 1.3846 ns                                                   | 2.4741 ns                                                  | 9.9680 ns                                                      | 25.851 ns                                             |
+| `sub`        | 2.2578 ns                                                   | 8.1349 ns                                                  | 7.5174 ns                                                      | 27.516 ns                                             |
+| `sub_assign` | 1.3335 ns                                                   | 10.207 ns                                                  | -                                                              | 23.835 ns                                             |
+| `mul`        | 12.807 ns                                                   | 16.439 ns                                                  | 18.788 ns                                                      | 196.49 ns                                             |
+| `mul_assign` | 11.334 ns                                                   | 19.647 ns                                                  | -                                                              | 180.26 ns                                             |
 
 ## Environment
 
