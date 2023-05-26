@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 cairo-felt = { git = "https://github.com/lambdaclass/cairo-rs" }
 hex = "0.4.3"
+lambdaworks-math = { git = "https://github.com/lambdaclass/lambdaworks" }
 stark_curve = { git = "https://github.com/eqlabs/pathfinder" }
 stark_hash = { git = "https://github.com/eqlabs/pathfinder" }
 starknet-ff = { git = "https://github.com/xJonathanLEI/starknet-rs" }
