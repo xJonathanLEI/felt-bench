@@ -37,3 +37,7 @@ harness = false
 [[bench]]
 name = "mul_assign"
 harness = false
+
+[[bench]]
+name = "invert"
+harness = false
