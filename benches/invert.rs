@@ -58,7 +58,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             "invert | lambdaworks-math - lambdaclass/lambdaworks@61b26ab",
             |b| {
                 b.iter(|| {
-                    black_box((&num).inv());
+                    black_box(num.inv());
                 });
             },
         );
