@@ -12,6 +12,7 @@ Comparison of performance of various Starknet field element type implementations
 | `sub_assign` | 1.3335 ns                                                   | 10.207 ns                                                  | -                                                              | 23.835 ns                                             |
 | `mul`        | 12.807 ns                                                   | 16.439 ns                                                  | 18.788 ns                                                      | 196.49 ns                                             |
 | `mul_assign` | 11.334 ns                                                   | 19.647 ns                                                  | -                                                              | 180.26 ns                                             |
+| `invert`     | 4.1439 µs                                                   | 1.9090 µs                                                  | 9.4014 µs                                                      | -                                                     |
 
 ## Environment
 
