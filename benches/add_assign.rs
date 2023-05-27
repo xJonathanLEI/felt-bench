@@ -98,7 +98,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "add_assign | lambdaworks-math - lambdaclass/lambdaworks@61b26ab",
+            "add_assign | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
             |b| {
                 b.iter(|| {
                     // We have to clone here as `FieldElement` from lambdaworks-math does not

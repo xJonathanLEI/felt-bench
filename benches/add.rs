@@ -91,7 +91,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "add | lambdaworks-math - lambdaclass/lambdaworks@61b26ab",
+            "add | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
             |b| {
                 b.iter(|| {
                     black_box((&num_1).add(&num_2));
