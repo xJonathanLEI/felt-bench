@@ -41,3 +41,8 @@ harness = false
 [[bench]]
 name = "invert"
 harness = false
+
+[profile.bench]
+lto = true
+opt-level = 3
+codegen-units = 1
