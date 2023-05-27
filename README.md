@@ -6,13 +6,13 @@ Comparison of performance of various Starknet field element type implementations
 
 |              | [stark_curve](https://github.com/eqlabs/pathfinder) | [starknet-ff](https://github.com/xJonathanLEI/starknet-rs) | [lambdaworks-math](https://github.com/lambdaclass/lambdaworks) | [cairo-felt](https://github.com/lambdaclass/cairo-rs) |
 | ------------ | --------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------- |
-| `add`        | 2.4629 ns                                           | 875.44 ps                                                  | 868.54 ps :crown:                                              | 19.382 ns                                             |
-| `add_assign` | 1.6079 ns                                           | 1.1108 ns :crown:                                          | 1.6464 ns                                                      | 23.097 ns                                             |
-| `sub`        | 2.2762 ns                                           | 1.5992 ns                                                  | 844.94 ps :crown:                                              | 16.815 ns                                             |
-| `sub_assign` | 1.2995 ns :crown:                                   | 1.3808 ns                                                  | -                                                              | 20.515 ns                                             |
-| `mul`        | 12.869 ns :crown:                                   | 13.622 ns                                                  | 13.406 ns                                                      | 185.81 ns                                             |
-| `mul_assign` | 11.324 ns :crown:                                   | 19.025 ns                                                  | -                                                              | 172.23 ns                                             |
-| `invert`     | 4.1449 µs                                           | 1.7087 µs :crown:                                          | 7.7503 µs                                                      | -                                                     |
+| `add`        | 2.4747 ns                                           | 877.72 ps                                                  | 847.71 ps :crown:                                              | 18.514 ns                                             |
+| `add_assign` | 1.5418 ns                                           | 1.0736 ns :crown:                                          | 1.6910 ns                                                      | 22.489 ns                                             |
+| `sub`        | 2.2956 ns                                           | 1.7650 ns                                                  | 869.94 ps :crown:                                              | 17.627 ns                                             |
+| `sub_assign` | 1.2958 ns :crown:                                   | 1.3825 ns                                                  | -                                                              | 20.443 ns                                             |
+| `mul`        | 13.252 ns                                           | 13.982 ns                                                  | 871.34 ps :crown:                                              | 191.29 ns                                             |
+| `mul_assign` | 11.673 ns :crown:                                   | 19.648 ns                                                  | -                                                              | 180.07 ns                                             |
+| `invert`     | 4.0473 µs                                           | 1.6647 µs :crown:                                          | 7.5690 µs                                                      | -                                                     |
 
 ## Environment
 
