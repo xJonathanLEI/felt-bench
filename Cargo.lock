@@ -344,6 +344,7 @@ dependencies = [
  "criterion",
  "hex",
  "lambdaworks-math",
+ "num-traits",
  "stark_curve",
  "stark_hash",
  "starknet-ff",
