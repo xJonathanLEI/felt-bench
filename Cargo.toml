@@ -42,6 +42,10 @@ harness = false
 name = "invert"
 harness = false
 
+[[bench]]
+name = "sqrt"
+harness = false
+
 [profile.bench]
 lto = true
 opt-level = 3
