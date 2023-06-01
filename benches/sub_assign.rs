@@ -41,7 +41,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
 
         c.bench_function(
-            "sub_assign | cairo-felt - lambdaclass/cairo-rs@e173ec9",
+            "sub_assign | cairo-felt - lambdaclass/cairo-rs@5db2e65",
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
@@ -72,7 +72,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
 
         c.bench_function(
-            "sub_assign | stark_curve - eqlabs/pathfinder@fccef91",
+            "sub_assign | stark_curve - eqlabs/pathfinder@5b131c5",
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
