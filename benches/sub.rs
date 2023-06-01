@@ -39,7 +39,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
                 .unwrap(),
         );
 
-        c.bench_function("sub | cairo-felt - lambdaclass/cairo-rs@e173ec9", |b| {
+        c.bench_function("sub | cairo-felt - lambdaclass/cairo-rs@5db2e65", |b| {
             b.iter(|| {
                 // No choice but to clone here. See the `sub_assign` bench for the clone-less
                 // version
@@ -68,7 +68,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             .unwrap(),
         );
 
-        c.bench_function("sub | stark_curve - eqlabs/pathfinder@fccef91", |b| {
+        c.bench_function("sub | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
             b.iter(|| {
                 black_box(num_1.sub(num_2));
             });
@@ -91,7 +91,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "sub | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
+            "sub | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
             |b| {
                 b.iter(|| {
                     black_box((&num_1).sub(&num_2));

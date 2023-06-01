@@ -41,7 +41,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
 
         c.bench_function(
-            "add_assign | cairo-felt - lambdaclass/cairo-rs@e173ec9",
+            "add_assign | cairo-felt - lambdaclass/cairo-rs@5db2e65",
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
@@ -72,7 +72,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
 
         c.bench_function(
-            "add_assign | stark_curve - eqlabs/pathfinder@fccef91",
+            "add_assign | stark_curve - eqlabs/pathfinder@5b131c5",
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
@@ -98,7 +98,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "add_assign | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
+            "add_assign | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
             |b| {
                 b.iter(|| {
                     // We have to clone here as `FieldElement` from lambdaworks-math does not

@@ -36,7 +36,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             .unwrap(),
         );
 
-        c.bench_function("invert | stark_curve - eqlabs/pathfinder@fccef91", |b| {
+        c.bench_function("invert | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
             b.iter(|| {
                 black_box(num.invert().unwrap());
             });
@@ -55,7 +55,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "invert | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
+            "invert | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
             |b| {
                 b.iter(|| {
                     black_box(num.inv());
