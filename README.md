@@ -6,13 +6,15 @@ Comparison of performance of various Starknet field element type implementations
 
 |              | [stark_curve](https://github.com/eqlabs/pathfinder) | [starknet-ff](https://github.com/xJonathanLEI/starknet-rs) | [lambdaworks-math](https://github.com/lambdaclass/lambdaworks) | [cairo-felt](https://github.com/lambdaclass/cairo-rs) |
 | ------------ | --------------------------------------------------- | ---------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------- |
-| `add`        | 2.4747 ns                                           | 877.72 ps                                                  | 847.71 ps :crown:                                              | 18.514 ns                                             |
-| `add_assign` | 1.5418 ns                                           | 1.0736 ns :crown:                                          | 1.6910 ns                                                      | 22.489 ns                                             |
-| `sub`        | 2.2956 ns                                           | 1.7650 ns                                                  | 869.94 ps :crown:                                              | 17.627 ns                                             |
-| `sub_assign` | 1.2958 ns :crown:                                   | 1.3825 ns                                                  | -                                                              | 20.443 ns                                             |
-| `mul`        | 13.252 ns                                           | 13.982 ns                                                  | 871.34 ps :crown:                                              | 191.29 ns                                             |
-| `mul_assign` | 11.673 ns :crown:                                   | 19.648 ns                                                  | -                                                              | 180.07 ns                                             |
-| `invert`     | 4.0473 µs                                           | 1.6647 µs :crown:                                          | 7.5690 µs                                                      | -                                                     |
+| `add`        | 2.8881 ns                                           | 2.7005 ns :crown:                                          | 2.7676 ns                                                      | 13.846 ns                                             |
+| `add_assign` | 1.5875 ns                                           | 1.4151 ns :crown:                                          | 2.5144 ns                                                      | 16.843 ns                                             |
+| `sub`        | 2.7582 ns                                           | 2.8521 ns                                                  | 2.4251 ns :crown:                                              | 15.117 ns                                             |
+| `sub_assign` | 1.4572 ns :crown:                                   | 2.4310 ns                                                  | -                                                              | 17.170 ns                                             |
+| `mul`        | 13.347 ns                                           | 13.862 ns                                                  | 11.004 ns :crown:                                              | 161.04 ns                                             |
+| `mul_assign` | 11.552 ns :crown:                                   | 19.395 ns                                                  | -                                                              | 154.29 ns                                             |
+| `invert`     | 3.7260 µs                                           | 1.6670 µs :crown:                                          | 1.7172 µs                                                      | -                                                     |
+| `sqrt`       | 1.8468 ms                                           | 106.75 µs :crown:                                          | 230.09 µs                                                      | 4.3102 ms                                             |
+| `pow`        | 1.0524 µs :crown:                                   | -                                                          | 1.0598 µs                                                      | 6.1588 µs                                             |
 
 ## Environment
 
@@ -22,7 +24,7 @@ Comparison of performance of various Starknet field element type implementations
 
 - **OS**
 
-  _Debian GNU/Linux 11 (bullseye)_
+  _Ubuntu 22.04.1 LTS_
 
 ## Running benchmarks
 
