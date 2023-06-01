@@ -12,7 +12,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
         let num_2 = Felt252::from(u32::MAX);
 
-        c.bench_function("pow | cairo-felt - lambdaclass/cairo-rs@e173ec9", |b| {
+        c.bench_function("pow | cairo-felt - lambdaclass/cairo-rs@5db2e65", |b| {
             b.iter(|| {
                 black_box(black_box(&num_1).pow(black_box(&num_2)));
             });
@@ -34,7 +34,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
         let num_2 = [u32::MAX as u64];
 
-        c.bench_function("pow | stark_curve - eqlabs/pathfinder@fccef91", |b| {
+        c.bench_function("pow | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
             b.iter(|| {
                 black_box(black_box(&num_1).pow_vartime(black_box(&num_2)));
             });
@@ -54,7 +54,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         let num_2 = u32::MAX;
 
         c.bench_function(
-            "pow | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
+            "pow | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
             |b| {
                 b.iter(|| {
                     black_box(black_box(&num_1).pow(black_box(num_2)));

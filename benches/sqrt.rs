@@ -31,7 +31,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
         let num = &num * &num;
 
-        c.bench_function("sqrt | cairo-felt - lambdaclass/cairo-rs@e173ec9", |b| {
+        c.bench_function("sqrt | cairo-felt - lambdaclass/cairo-rs@5db2e65", |b| {
             b.iter(|| {
                 black_box(black_box(&num).sqrt());
             });
@@ -54,7 +54,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         #[allow(clippy::op_ref)]
         let num = num * &num;
 
-        c.bench_function("sqrt | stark_curve - eqlabs/pathfinder@fccef91", |b| {
+        c.bench_function("sqrt | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
             b.iter(|| {
                 black_box(black_box(&num).sqrt());
             });
@@ -74,7 +74,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         let num = &num * &num;
 
         c.bench_function(
-            "sqrt | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
+            "sqrt | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
             |b| {
                 b.iter(|| {
                     black_box(black_box(&num).sqrt());
