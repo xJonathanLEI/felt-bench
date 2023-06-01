@@ -31,3 +31,15 @@ To run the benchmarks:
 ```console
 $ cargo bench
 ```
+
+Alternatively, pipe all the console output into a file:
+
+```console
+$ cargo bench >> ./result.log 2>&1
+```
+
+and then generate the Markdown table above with:
+
+```console
+$ cargo run
+```

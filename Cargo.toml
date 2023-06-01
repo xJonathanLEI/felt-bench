@@ -8,6 +8,7 @@ cairo-felt = { git = "https://github.com/lambdaclass/cairo-rs" }
 hex = "0.4.3"
 lambdaworks-math = { git = "https://github.com/lambdaclass/lambdaworks" }
 num-traits = "0.2.15"
+regex = "1.8.3"
 stark_curve = { git = "https://github.com/eqlabs/pathfinder" }
 stark_hash = { git = "https://github.com/eqlabs/pathfinder" }
 starknet-ff = { git = "https://github.com/xJonathanLEI/starknet-rs" }
