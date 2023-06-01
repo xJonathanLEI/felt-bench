@@ -1,4 +1,9 @@
-use std::io::{BufRead, BufReader};
+use std::{
+    cmp::Ordering,
+    fmt::Display,
+    io::{BufRead, BufReader},
+    str::FromStr,
+};
 
 use regex::Regex;
 
@@ -44,10 +49,88 @@ struct Implementation {
     repo: &'static str,
 }
 
+#[derive(Clone)]
 struct BenchmarkResult {
     benchmark: &'static str,
     implementation: Implementation,
-    result: String,
+    result: Time,
+}
+
+#[derive(Clone)]
+struct RankedBenchmarkResult {
+    result: BenchmarkResult,
+    is_fastest: bool,
+}
+
+#[derive(Clone, PartialEq, Eq)]
+struct Time {
+    value: String,
+    unit: Unit,
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+enum Unit {
+    Picosecond,
+    Nanosecond,
+    Microsecond,
+    Millisecond,
+    Second,
+}
+
+impl Ord for Time {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+
+impl PartialOrd for Time {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        match self.unit.cmp(&other.unit) {
+            Ordering::Less => Some(Ordering::Less),
+            Ordering::Equal => {
+                if self.value == other.value {
+                    Some(Ordering::Equal)
+                } else {
+                    Some(
+                        f32::from_str(&self.value)
+                            .expect("unable to parse value")
+                            .total_cmp(
+                                &f32::from_str(&other.value).expect("unable to parse value"),
+                            ),
+                    )
+                }
+            }
+
+            Ordering::Greater => Some(Ordering::Greater),
+        }
+    }
+}
+
+impl FromStr for Unit {
+    type Err = &'static str;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "ps" => Ok(Self::Picosecond),
+            "ns" => Ok(Self::Nanosecond),
+            "µs" => Ok(Self::Microsecond),
+            "ms" => Ok(Self::Millisecond),
+            "s" => Ok(Self::Second),
+            _ => Err("unknown unit"),
+        }
+    }
+}
+
+impl Display for Unit {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Unit::Picosecond => write!(f, "ps"),
+            Unit::Nanosecond => write!(f, "ns"),
+            Unit::Microsecond => write!(f, "µs"),
+            Unit::Millisecond => write!(f, "ms"),
+            Unit::Second => write!(f, "s"),
+        }
+    }
 }
 
 fn main() {
@@ -55,12 +138,12 @@ fn main() {
     let log_file = std::fs::File::open("./result.log").expect("console log file not found");
     let log_reader = BufReader::new(log_file);
 
-    let mut all_results = vec![];
+    let mut results = vec![];
 
     let mut line_iter = log_reader.lines();
 
     let time_regex = Regex::new(
-        r###"time:   \[[\d\.]* [a-zµ]* (?P<median>[\d\.]* [a-zµ]*) [\d\.]* [a-zµ]*\]"###,
+        r###"time:   \[[\d\.]* [a-zµ]* (?P<median_value>[\d\.]*) (?P<median_unit>[a-zµ]*) [\d\.]* [a-zµ]*\]"###,
     )
     .expect("unable to build regex");
 
@@ -83,22 +166,44 @@ fn main() {
                         .expect("unexpected end of log")
                         .expect("invalid utf-8");
 
-                    let median = time_regex
-                        .captures(&next_line)
-                        .expect("regex not matched")
-                        .name("median")
+                    let matches = time_regex.captures(&next_line).expect("regex not matched");
+
+                    let median_value = matches
+                        .name("median_value")
                         .expect("unable to extract median")
                         .as_str();
 
-                    all_results.push(BenchmarkResult {
+                    let median_unit = matches
+                        .name("median_unit")
+                        .expect("unable to extract median")
+                        .as_str();
+
+                    results.push(BenchmarkResult {
                         benchmark,
                         implementation,
-                        result: median.into(),
+                        result: Time {
+                            value: median_value.into(),
+                            unit: median_unit.parse().expect("unable to parse unit"),
+                        },
                     })
                 }
             }
         }
     }
+
+    let results = results
+        .iter()
+        .map(|raw_result| RankedBenchmarkResult {
+            result: raw_result.to_owned(),
+            is_fastest: results
+                .iter()
+                .filter(|item| item.benchmark == raw_result.benchmark)
+                .min_by_key(|item| &item.result)
+                .expect("unable to find fastest item")
+                .implementation
+                == raw_result.implementation,
+        })
+        .collect::<Vec<_>>();
 
     print!("| |");
     for implementation in IMPLEMENTATIONS.into_iter() {
@@ -116,15 +221,20 @@ fn main() {
         print!("| `{}` |", benchmark);
 
         for implementation in IMPLEMENTATIONS.into_iter() {
-            let result = all_results
-                .iter()
-                .find(|item| item.benchmark == benchmark && item.implementation == implementation);
+            let result = results.iter().find(|item| {
+                item.result.benchmark == benchmark && item.result.implementation == implementation
+            });
 
             print!(
                 " {} |",
                 match result {
-                    Some(result) => &result.result,
-                    None => "-",
+                    Some(result) => format!(
+                        "{} {}{}",
+                        result.result.result.value,
+                        result.result.result.unit,
+                        if result.is_fastest { " :crown:" } else { "" }
+                    ),
+                    None => "-".into(),
                 }
             );
         }
