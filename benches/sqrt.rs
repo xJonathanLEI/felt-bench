@@ -40,8 +40,8 @@ pub fn criterion_benchmark(c: &mut Criterion) {
 
     // stark_curve
     {
-        use stark_curve::FieldElement;
         use stark_curve::ff::Field;
+        use stark_curve::FieldElement;
         use stark_hash::Felt;
 
         let num = FieldElement::from(
@@ -51,6 +51,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             )
             .unwrap(),
         );
+        #[allow(clippy::op_ref)]
         let num = num * &num;
 
         c.bench_function("sqrt | stark_curve - eqlabs/pathfinder@fccef91", |b| {
