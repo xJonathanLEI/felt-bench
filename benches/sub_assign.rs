@@ -21,7 +21,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
-                    black_box(num_1.sub_assign(num_2));
+                    black_box(num_1.sub_assign(black_box(num_2)));
                 });
             },
         );
@@ -45,7 +45,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
-                    black_box(num_1.sub_assign(&num_2));
+                    black_box(num_1.sub_assign(black_box(&num_2)));
                 });
             },
         );
@@ -76,7 +76,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
-                    black_box(num_1.sub_assign(&num_2));
+                    black_box(num_1.sub_assign(black_box(&num_2)));
                 });
             },
         );

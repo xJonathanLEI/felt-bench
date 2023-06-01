@@ -20,7 +20,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             "mul | starknet-ff - xJonathanLEI/starknet-rs@a6cbfa3",
             |b| {
                 b.iter(|| {
-                    black_box(num_1.mul(num_2));
+                    black_box(black_box(&num_1).mul(black_box(num_2)));
                 });
             },
         );
@@ -43,7 +43,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             b.iter(|| {
                 // No choice but to clone here. See the `sub_assign` bench for the clone-less
                 // version
-                black_box(num_1.clone().mul(&num_2));
+                black_box(black_box(&num_1).mul(black_box(&num_2)));
             });
         });
     }
@@ -70,7 +70,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
 
         c.bench_function("mul | stark_curve - eqlabs/pathfinder@fccef91", |b| {
             b.iter(|| {
-                black_box(num_1.mul(num_2));
+                black_box(black_box(num_1).mul(black_box(num_2)));
             });
         });
     }
@@ -94,7 +94,7 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             "mul | lambdaworks-math - lambdaclass/lambdaworks@75423a1",
             |b| {
                 b.iter(|| {
-                    black_box((&num_1).mul(&num_2));
+                    black_box(black_box(&num_1).mul(black_box(&num_2)));
                 });
             },
         );
