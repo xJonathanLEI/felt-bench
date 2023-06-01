@@ -1,4 +1,7 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use felt_bench::*;
+
+const BENCHMARK_NAME: &str = "pow";
 
 pub fn criterion_benchmark(c: &mut Criterion) {
     // cairo-felt
@@ -12,11 +15,17 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
         let num_2 = Felt252::from(u32::MAX);
 
-        c.bench_function("pow | cairo-felt - lambdaclass/cairo-rs@5db2e65", |b| {
-            b.iter(|| {
-                black_box(black_box(&num_1).pow(black_box(&num_2)));
-            });
-        });
+        c.bench_function(
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_CAIRO_FELT.name, IMPL_CAIRO_FELT.source,
+            ),
+            |b| {
+                b.iter(|| {
+                    black_box(black_box(&num_1).pow(black_box(&num_2)));
+                });
+            },
+        );
     }
 
     // stark_curve
@@ -34,11 +43,17 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
         let num_2 = [u32::MAX as u64];
 
-        c.bench_function("pow | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
-            b.iter(|| {
-                black_box(black_box(&num_1).pow_vartime(black_box(&num_2)));
-            });
-        });
+        c.bench_function(
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARK_CURVE.name, IMPL_STARK_CURVE.source,
+            ),
+            |b| {
+                b.iter(|| {
+                    black_box(black_box(&num_1).pow_vartime(black_box(&num_2)));
+                });
+            },
+        );
     }
 
     // lambdaworks-math
@@ -54,7 +69,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         let num_2 = u32::MAX;
 
         c.bench_function(
-            "pow | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_LAMBDAWORKS_MATH.name, IMPL_LAMBDAWORKS_MATH.source,
+            ),
             |b| {
                 b.iter(|| {
                     black_box(black_box(&num_1).pow(black_box(num_2)));

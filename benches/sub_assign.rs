@@ -1,6 +1,9 @@
 use std::ops::SubAssign;
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use felt_bench::*;
+
+const BENCHMARK_NAME: &str = "sub_assign";
 
 pub fn criterion_benchmark(c: &mut Criterion) {
     // starknet-ff
@@ -17,7 +20,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "sub_assign | starknet-ff - xJonathanLEI/starknet-rs@a6cbfa3",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARKNET_FF.name, IMPL_STARKNET_FF.source,
+            ),
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
@@ -41,7 +47,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
 
         c.bench_function(
-            "sub_assign | cairo-felt - lambdaclass/cairo-rs@5db2e65",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_CAIRO_FELT.name, IMPL_CAIRO_FELT.source,
+            ),
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]
@@ -72,7 +81,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         );
 
         c.bench_function(
-            "sub_assign | stark_curve - eqlabs/pathfinder@5b131c5",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARK_CURVE.name, IMPL_STARK_CURVE.source,
+            ),
             |b| {
                 b.iter(|| {
                     #[allow(clippy::unit_arg)]

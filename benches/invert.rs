@@ -1,4 +1,7 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use felt_bench::*;
+
+const BENCHMARK_NAME: &str = "invert";
 
 pub fn criterion_benchmark(c: &mut Criterion) {
     // starknet-ff
@@ -11,7 +14,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "invert | starknet-ff - xJonathanLEI/starknet-rs@a6cbfa3",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARKNET_FF.name, IMPL_STARKNET_FF.source,
+            ),
             |b| {
                 b.iter(|| {
                     black_box(black_box(&num).invert().unwrap());
@@ -36,11 +42,17 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             .unwrap(),
         );
 
-        c.bench_function("invert | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
-            b.iter(|| {
-                black_box(black_box(&num).invert().unwrap());
-            });
-        });
+        c.bench_function(
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARK_CURVE.name, IMPL_STARK_CURVE.source,
+            ),
+            |b| {
+                b.iter(|| {
+                    black_box(black_box(&num).invert().unwrap());
+                });
+            },
+        );
     }
 
     // lambdaworks-math
@@ -55,7 +67,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "invert | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_LAMBDAWORKS_MATH.name, IMPL_LAMBDAWORKS_MATH.source,
+            ),
             |b| {
                 b.iter(|| {
                     black_box(black_box(&num).inv());

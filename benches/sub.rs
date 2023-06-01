@@ -1,6 +1,9 @@
 use std::ops::Sub;
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
+use felt_bench::*;
+
+const BENCHMARK_NAME: &str = "sub";
 
 pub fn criterion_benchmark(c: &mut Criterion) {
     // starknet-ff
@@ -17,7 +20,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "sub | starknet-ff - xJonathanLEI/starknet-rs@a6cbfa3",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARKNET_FF.name, IMPL_STARKNET_FF.source,
+            ),
             |b| {
                 b.iter(|| {
                     black_box(black_box(num_1).sub(black_box(num_2)));
@@ -39,13 +45,19 @@ pub fn criterion_benchmark(c: &mut Criterion) {
                 .unwrap(),
         );
 
-        c.bench_function("sub | cairo-felt - lambdaclass/cairo-rs@5db2e65", |b| {
-            b.iter(|| {
-                // No choice but to clone here. See the `sub_assign` bench for the clone-less
-                // version
-                black_box(black_box(&num_1).sub(black_box(&num_2)));
-            });
-        });
+        c.bench_function(
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_CAIRO_FELT.name, IMPL_CAIRO_FELT.source,
+            ),
+            |b| {
+                b.iter(|| {
+                    // No choice but to clone here. See the `sub_assign` bench for the clone-less
+                    // version
+                    black_box(black_box(&num_1).sub(black_box(&num_2)));
+                });
+            },
+        );
     }
 
     // stark_curve
@@ -68,11 +80,17 @@ pub fn criterion_benchmark(c: &mut Criterion) {
             .unwrap(),
         );
 
-        c.bench_function("sub | stark_curve - eqlabs/pathfinder@5b131c5", |b| {
-            b.iter(|| {
-                black_box(black_box(num_1).sub(black_box(num_2)));
-            });
-        });
+        c.bench_function(
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_STARK_CURVE.name, IMPL_STARK_CURVE.source,
+            ),
+            |b| {
+                b.iter(|| {
+                    black_box(black_box(num_1).sub(black_box(num_2)));
+                });
+            },
+        );
     }
 
     // lambdaworks-math
@@ -91,7 +109,10 @@ pub fn criterion_benchmark(c: &mut Criterion) {
         .unwrap();
 
         c.bench_function(
-            "sub | lambdaworks-math - lambdaclass/lambdaworks@46dd588",
+            &format!(
+                "{} | {} - {}",
+                BENCHMARK_NAME, IMPL_LAMBDAWORKS_MATH.name, IMPL_LAMBDAWORKS_MATH.source,
+            ),
             |b| {
                 b.iter(|| {
                     black_box(black_box(&num_1).sub(black_box(&num_2)));
