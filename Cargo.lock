@@ -15,9 +15,9 @@ dependencies = [
 
 [[package]]
 name = "aho-corasick"
-version = "1.0.1"
+version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "67fc08ce920c31afb70f013dcce1bfc3a3195de6a228474e45e1f145b36f8d04"
+checksum = "43f6cb1bf222025340178f382c426f13757b2960e89779dfcb319c32542a5a41"
 dependencies = [
  "memchr",
 ]
@@ -154,7 +154,7 @@ checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 [[package]]
 name = "cairo-felt"
 version = "0.4.0"
-source = "git+https://github.com/lambdaclass/cairo-rs#5db2e656d46a97d89563a74f8fc3abd595e8befb"
+source = "git+https://github.com/lambdaclass/cairo-rs#ae87c315396e7456fb847f9f739254c4801101d2"
 dependencies = [
  "lazy_static",
  "num-bigint 0.4.3",
@@ -404,9 +404,9 @@ dependencies = [
 
 [[package]]
 name = "getrandom"
-version = "0.2.9"
+version = "0.2.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c85e1d9ab2eadba7e5040d4e09cbd6d072b76a557ad64e797c2cb9d4da21d7e4"
+checksum = "be4136b2a15dd319360be1c07d9933517ccf0be8f16bf62a3bee4f0d618df427"
 dependencies = [
  "cfg-if",
  "js-sys",
@@ -488,7 +488,7 @@ dependencies = [
 [[package]]
 name = "lambdaworks-math"
 version = "0.1.0"
-source = "git+https://github.com/lambdaclass/lambdaworks#46dd588e9263a2f36935a2c41f28dc2e3352edc4"
+source = "git+https://github.com/lambdaclass/lambdaworks#30e6fb2e88ae92463549bb195e66ec052de827a0"
 dependencies = [
  "rand",
  "rayon",
@@ -506,9 +506,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.144"
+version = "0.2.146"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b00cc1c228a6782d0f076e7b232802e0c5689d41bb5df366f2a6b6621cfdfe1"
+checksum = "f92be4933c13fd498862a9e02a3055f8a8d9c039ce33db97306fd5a6caa7f29b"
 
 [[package]]
 name = "log"
@@ -585,9 +585,9 @@ dependencies = [
 
 [[package]]
 name = "once_cell"
-version = "1.17.2"
+version = "1.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9670a07f94779e00908f3e686eab508878ebb390ba6e604d3a284c00e8d0487b"
+checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 
 [[package]]
 name = "oorandom"
@@ -691,9 +691,9 @@ dependencies = [
 
 [[package]]
 name = "regex"
-version = "1.8.3"
+version = "1.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "81ca098a9821bd52d6b24fd8b10bd081f47d39c22778cafaa75a2857a62c6390"
+checksum = "d0ab3ca65655bb1e41f2a8c8cd662eb4fb035e67c3f78da1d61dffe89d07300f"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -782,7 +782,7 @@ checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 [[package]]
 name = "stark_curve"
 version = "0.1.0"
-source = "git+https://github.com/eqlabs/pathfinder#5b131c5b53adbd75fb3201988464483e424cb568"
+source = "git+https://github.com/eqlabs/pathfinder#29b7fb67c79932a273d6959920fca349b0b1c13f"
 dependencies = [
  "bitvec",
  "ff",
@@ -791,7 +791,7 @@ dependencies = [
 [[package]]
 name = "stark_hash"
 version = "0.1.0"
-source = "git+https://github.com/eqlabs/pathfinder#5b131c5b53adbd75fb3201988464483e424cb568"
+source = "git+https://github.com/eqlabs/pathfinder#29b7fb67c79932a273d6959920fca349b0b1c13f"
 dependencies = [
  "bitvec",
  "rand_core",
@@ -802,7 +802,7 @@ dependencies = [
 [[package]]
 name = "starknet-ff"
 version = "0.3.2"
-source = "git+https://github.com/xJonathanLEI/starknet-rs#a6cbfa3be71e9f42532c393632bdf18ccb01f88a"
+source = "git+https://github.com/xJonathanLEI/starknet-rs#df38013a62923477c06b502d6f3d37ba0d5afe95"
 dependencies = [
  "ark-ff",
  "bigdecimal",

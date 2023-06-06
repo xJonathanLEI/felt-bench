@@ -15,22 +15,22 @@ pub const BENCHMARKS: [&str; 9] = [
 pub const IMPLEMENTATIONS: [Implementation; 4] = [
     Implementation {
         name: "stark_curve",
-        source: "eqlabs/pathfinder@5b131c5",
+        source: "eqlabs/pathfinder@29b7fb6",
         repo: "https://github.com/eqlabs/pathfinder",
     },
     Implementation {
         name: "starknet-ff",
-        source: "xJonathanLEI/starknet-rs@a6cbfa3",
+        source: "xJonathanLEI/starknet-rs@df38013",
         repo: "https://github.com/xJonathanLEI/starknet-rs",
     },
     Implementation {
         name: "lambdaworks-math",
-        source: "lambdaclass/lambdaworks@46dd588",
+        source: "lambdaclass/lambdaworks@30e6fb2",
         repo: "https://github.com/lambdaclass/lambdaworks",
     },
     Implementation {
         name: "cairo-felt",
-        source: "lambdaclass/cairo-rs@5db2e65",
+        source: "lambdaclass/cairo-rs@ae87c31",
         repo: "https://github.com/lambdaclass/cairo-rs",
     },
 ];
